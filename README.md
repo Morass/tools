@@ -8,3 +8,5 @@ Feel free to use them and/or comment if you think up any improvement.
 ### [Committer](scripts/git/commit.sh)
 
 Terminal (slightly visual) tool to check changed files and commit them with a chosen message (with chosen [conventional commit](https://cheatography.com/albelop/cheat-sheets/conventional-commits/) ).
+
+The choice is controlled by arrows: down/up (⇅) for navigation and right for choice (→).
