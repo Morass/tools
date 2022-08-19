@@ -104,7 +104,7 @@ clear
 read -r -p "${commits[$index]}: " com 
 git commit -m "${commits[$index]}: $com"
 
-# >>>>>>>>>>> GIT MESSAGE <<<<<<<<<<<<<<<<
+# >>>>>>>>>>> GIT PUSH <<<<<<<<<<<<<<<<
 
 clear
 while true
