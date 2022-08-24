@@ -106,13 +106,18 @@ git commit -m "${commits[$index]}: $com"
 
 # >>>>>>>>>>> GIT PUSH <<<<<<<<<<<<<<<<
 
+push(){
+    branch_name=$(git rev-parse --abbrev-ref HEAD)
+    git push || git push --set-upstream origin "${branch_name}"
+}
+
 clear
 while true
 do
     read -rN1 -p "You wish to push? [y/n] " push
     [[ "$push" == "n" ]] && break
     [[ "$push" == "N" ]] && break
-    [[ "$push" == "y" ]] && { echo ; git push >/dev/null ; break ; }
-    [[ "$push" == "Y" ]] && { echo ; git push >/dev/null ; break ; }
+    [[ "$push" == "y" ]] && { echo ; push ; break ; }
+    [[ "$push" == "Y" ]] && { echo ; push ; break ; }
 done
-
+clear
