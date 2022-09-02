@@ -55,7 +55,8 @@ do
                 [[ "$file" == "_ALL" ]] && continue
                 [[ "$file" == "_EXIT" ]] && continue
                 pth="${PATH_TO_GIT}/${file}"
-                [[ -f "$pth" ]] && git add "$pth"
+                # It might be some bad stuff marked as DONE
+                git add "$pth" 2>/dev/null >/dev/null
             done
             break
         fi
