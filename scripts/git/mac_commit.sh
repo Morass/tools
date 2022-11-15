@@ -32,11 +32,8 @@ pgs(){
     done
 }
 
-
-for file in $(git status --porcelain|sed 's/^ *[^ ]* *//')
-do
-    files+=("$file")
-done
+IFS=$'\n' read -rd '' -a git_files <<<"$(git status --porcelain|sed 's/^ *[^ ]* *//'|tr -d '"')"
+files+=( "${git_files[@]}" )
 len="${#files[@]}"
 
 while true
