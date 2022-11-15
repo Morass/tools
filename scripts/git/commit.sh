@@ -33,6 +33,7 @@ pgs(){
 }
 
 
+# TODO: Fix spaces if ever necessary
 for file in $(git status --porcelain|sed 's/^ *[^ ]* *//')
 do
     files+=("$file")
