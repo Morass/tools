@@ -150,7 +150,7 @@ def main(source1: Path, source2: Path, identifier: str, compare: str, delimiter:
     click.echo(f"Identifier column: {identifier}")
     click.echo(f"Compared column: {compare}")
     click.echo(f"Delimiter: {delimiter}")
-    click.echo(f"Maximum epsilon difference: {compare}")
+    click.echo(f"Maximum epsilon difference: {epsilon}")
     if not source1 or not source1.is_file():
         raise ValueError(f"Parameter source1 is not an existing file '{source1}'")
 
