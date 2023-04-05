@@ -62,7 +62,7 @@ def is_approx_equal(cell1: str, cell2: str, epsilon: float) -> bool:
         return cell1 == cell2
 
 
-def compare_files(first: dict, second: dict, columns: str, epsilon: float) -> None:
+def compare_files(first: dict, second: dict, columns: list, epsilon: float) -> None:
     """
     Compares two CSV files represented as dictionaries.
 
@@ -71,7 +71,7 @@ def compare_files(first: dict, second: dict, columns: str, epsilon: float) -> No
                         and values should be lists representing the values in each column.
         second (dict): A dictionary representing the second CSV file. Keys should be the identifiers for each line,
                        and values should be lists representing the values in each column.
-        columns (str): A string containing the column letters to be compared, e.g. "AB". If a column letter
+        columns (list): A list of strings containing the column letters to be compared, e.g. "AB". If a column letter
                        is not included in this string, the values in that column will not be compared.
         epsilon (float): A value representing the maximum difference between two numeric values that should be
                          considered equal. If set to None, numeric values will be compared exactly.
@@ -127,7 +127,7 @@ def compare_files(first: dict, second: dict, columns: str, epsilon: float) -> No
 @click.option('--delimiter', '-d', type=str, default=",", help='Delimiter in the .csv files.')
 @click.option('--epsilon', '-e', type=float, default=None,
               help='Maximum difference in float cells. If None is set, only string difference is compared.')
-def main(source1: Path, source2: Path, identifier: str, compare: str, delimiter: str, epsilon: float):
+def main(source1: Path, source2: Path, identifier: str, compare: list, delimiter: str, epsilon: float):
     """
     Runs the main script to compare two CSV files.
 
@@ -135,7 +135,7 @@ def main(source1: Path, source2: Path, identifier: str, compare: str, delimiter:
         source1 (Path): Path to the first source CSV file.
         source2 (Path): Path to the second source CSV file.
         identifier (str): Column name in CSV files to identify lines.
-        compare (str): Column name in CSV files to compare or "all" to compare all columns.
+        compare (list): Column name in CSV files to compare or "all" to compare all columns.
         delimiter (str): Delimiter used in CSV files.
         epsilon (float): Maximum epsilon difference allowed between compared values.
 
