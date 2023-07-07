@@ -1,0 +1,35 @@
+  NEXT WORD
+- 8 - 31 - 7 + 99 + 16 - 8 * 7 == 13
+- o - ga - n + es + s - o * n == M
+
+ NEXT WORD
+16 - 53 - 3 + 6 * 8 + 7 == 15
+s - i - li + c * o + n == O
+
+ NEXT WORD
+6 + 18 + 5 - 8 - 7 == 14
+c + ar + b - o - n == N
+
+ NEXT WORD
+- 52 + 7 * 10 + 16 + 16 - 53 + 10 == 7
+- te + n * ne + s + s - i + ne == G
+
+ NEXT WORD
+15 + 1 * 8 + 16 + 15 - 67 + 44 - 16 == 15
+p + h * o + s + p - ho + ru - s == O
+
+ NEXT WORD
+36 + 39 - 78 + 8 + 7 == 12
+kr + y - pt + o + n == L
+
+ NEXT WORD
+83 - 62 - 92 + 90 == 19
+bi - sm - u + th == S
+
+ NEXT WORD
+16 - 53 + 116 - 68 == 11
+s - i + lv - er == K
+
+ NEXT WORD
+22 - 7 == 15
+ti - n == O
