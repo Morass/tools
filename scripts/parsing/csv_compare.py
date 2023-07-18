@@ -62,7 +62,7 @@ def is_approx_equal(cell1: str, cell2: str, epsilon: float) -> bool:
         return cell1 == cell2
 
 
-def compare_files(first: dict, second: dict, columns: list, epsilon: float) -> None:
+def compare_files(first: dict, second: dict, columns: list, epsilon: float, print_column: str) -> None:
     """
     Compares two CSV files represented as dictionaries.
 
@@ -75,6 +75,7 @@ def compare_files(first: dict, second: dict, columns: list, epsilon: float) -> N
                        is not included in this string, the values in that column will not be compared.
         epsilon (float): A value representing the maximum difference between two numeric values that should be
                          considered equal. If set to None, numeric values will be compared exactly.
+        print_column (str): The column to be printed additionally as info when lines differ.
 
     Returns:
         None
@@ -112,7 +113,7 @@ def compare_files(first: dict, second: dict, columns: list, epsilon: float) -> N
                     if not differs:
                         differs = True
                         different_lines += 1
-                        print(f"There are following differences in item '{key}':")
+                        print(f"There are following differences in item '{key}' ({line1[to_num(print_column)]}):")
                     print(f"    Column {to_letter(i)} does not match: '{line1[i]}' != '{line2[i]}'")
     print(f"  >> There are {different_lines} lines that differ (with given criteria). <<")
 
@@ -122,12 +123,15 @@ def compare_files(first: dict, second: dict, columns: list, epsilon: float) -> N
 @click.option('--source2', '-s2', type=Path, help='Path to second CSV file')
 @click.option('--identifier', '-id', default="B", type=click.Choice(ALL_COLLUMNS),
               help='Name of column which identifies item')
+@click.option('--print_column', '-p', default="R", type=click.Choice(ALL_COLLUMNS),
+              help='This column will be printed additionally as info when lines differ.')
 @click.option('--compare', '-c', default=["all"], type=click.Choice(ALL_COLLUMNS + ["all"]), multiple=True,
               help='Name of compared column(s) ("all" if any difference counts)')
 @click.option('--delimiter', '-d', type=str, default=",", help='Delimiter in the .csv files.')
 @click.option('--epsilon', '-e', type=float, default=None,
               help='Maximum difference in float cells. If None is set, only string difference is compared.')
-def main(source1: Path, source2: Path, identifier: str, compare: list, delimiter: str, epsilon: float):
+def main(source1: Path, source2: Path, identifier: str, print_column: str, compare: list, delimiter: str,
+         epsilon: float):
     """
     Runs the main script to compare two CSV files.
 
@@ -164,7 +168,7 @@ def main(source1: Path, source2: Path, identifier: str, compare: list, delimiter
     # Actual compare of the "files"
     if "all" in compare:
         compare = ALL_COLLUMNS
-    compare_files(dict_one, dict_two, compare, epsilon)
+    compare_files(dict_one, dict_two, compare, epsilon, print_column)
 
 
 if __name__ == '__main__':
