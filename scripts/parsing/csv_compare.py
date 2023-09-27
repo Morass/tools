@@ -1,17 +1,22 @@
 import string
 from pathlib import Path
 import click
-ALL_COLLUMNS = list(string.ascii_uppercase)
+ALL_COMBINATIONS = [f"{a}{b}" for a in string.ascii_uppercase for b in string.ascii_uppercase]
+ALL_COLLUMNS = list(string.ascii_uppercase) + ALL_COMBINATIONS
 
 
 def to_num(letter: str) -> int:
     """Convert an uppercase letter to its corresponding numeric position."""
-    return ord(letter) - 65
+    if len(letter) == 1:
+        return ord(letter) - 65
+    return ord(letter[-1]) - 65 + (to_num(letter[:-1]) + 1) * 26
 
 
 def to_letter(number: int) -> str:
     """Convert a number to its corresponding uppercase letter."""
-    return chr(number + 65)
+    if number < 26:
+        return chr(number + 65)
+    return  to_letter(number // 26 - 1) + chr(number % 26 + 65)
 
 
 def parse_file(source: Path, column: str, delimiter: str) -> dict:
