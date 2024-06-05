@@ -68,7 +68,7 @@ clear
 
 # >>>>>>>>>>> GIT MESSAGE <<<<<<<<<<<<<<<<
 
-commits=(chore fix docs feat test refactor style build perf ci revert)
+commits=(chore fix docs feat test refactor style build perf debug ci revert)
 len="${#commits[@]}"
 index=0
 

@@ -94,13 +94,13 @@ def compare_files(first: dict, second: dict, columns: list, epsilon: float, prin
     missing = [key for key in first if key not in second]
     if missing:
         print("Following objects are in first file but not in second:")
-        print('\n    '.join(missing))
+        print("    " + "\n    ".join(missing))
 
     # In second but not in first file
     missing = [key for key in second if key not in first]
     if missing:
         print("Following objects are in second file but not in first:")
-        print('\n    '.join(missing))
+        print("    " + "\n    ".join(missing))
 
     print("<<<<<<<<<<<< DIFFERENCES: >>>>>>>>>>>>")
     different_lines = 0
