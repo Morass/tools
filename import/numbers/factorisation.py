@@ -4,10 +4,10 @@ from collections import OrderedDict
 class Factors:
     """ Class for factorisation of a number and getting divisors
     """
-    factors = OrderedDict()
     def __init__(self, N):
         """ Initialises class with "factors" and their number in "factors" (OrderedDict)
         """
+        self.factors = OrderedDict()
         results = subprocess.check_output(["factor", f"{N}"]).rstrip().split()
         results = list(map(int,results[1:]))
         for r in results:
@@ -37,4 +37,3 @@ class Factors:
         Factors.__div(l, result)
         result.sort()
         return result
-
